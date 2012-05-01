@@ -15,9 +15,8 @@ public class Flight {
     private int numbOfSeatsTaken = 30;
     private int numbOfAvailSeats;
 
-    public int incrementNumberOfAvailSeats() {
+    private void incrementNumberOfAvailSeats() {
         numbOfSeatsTaken++;
-        return numbOfSeatsTaken;
     }
 
     public String getNextAvailableSeat() {
