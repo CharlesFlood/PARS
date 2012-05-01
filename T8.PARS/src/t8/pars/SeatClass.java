@@ -9,6 +9,6 @@ package t8.pars;
  *
  * @author
  */
-public class SeatClasses {
+public class SeatClass {
 
 }
