@@ -1,20 +1,21 @@
 package t8.pars;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Flight {
 
     private String departureLocation;
     private String arrivalLocation;
-    private String arrivalTime;
-    private String departureTime;
+    private String ARRIVAL_TIME = "3:00 PM PST";
+    private static final String DEPARTURE_TIME = "12:00 PM PST";
     private Date departureDate;
-    private Ticket ticket;
     private SeatClass seatClass = SeatClass.FIRST;
+    private static final int FLIGHT_CAPACITY = 30;
     private int flightNumber;
     private int numbOfSeatsTaken;
     private int numbOfAvailSeats;
-    private Customer[] passengers;
+    private ArrayList<Customer> passengers;
 
     /**
      * Get the value of flightNumber
@@ -74,7 +75,7 @@ public class Flight {
      * @return the value of departureTime
      */
     public String getDepartureTime() {
-        return departureTime;
+        return DEPARTURE_TIME;
     }
 
     /**
@@ -101,7 +102,7 @@ public class Flight {
      * @return the value of arrivalTime
      */
     public String getArrivalTime() {
-        return arrivalTime;
+        return ARRIVAL_TIME;
     }
 
     /**
@@ -120,15 +121,6 @@ public class Flight {
      */
     public SeatClass getSeatClass() {
         return seatClass;
-    }
-
-    /**
-     * Get the value of ticket
-     *
-     * @return the value of ticket
-     */
-    public Ticket getTicket() {
-        return ticket;
     }
 
     /**
