@@ -43,12 +43,16 @@ public class PARSDisplayer {
     public void printConfirmAllInformation(){}
     
     public void printMainMenu(){
+        System.out.println("Type the numberal of the desired action:");
         System.out.println("1. Reserve a Seat");
         System.out.println("2. Print an Existing Receipt");
         System.out.println("3. Show Available Flights");
         System.out.println("4. Print All Reservations");
         System.out.println("5. Logout");
         System.out.println("6. Quit Aplication");
+    }
+    public void printMainMenuErrorMessage(){
+        System.out.println("That is not a valid option.");
     }
     
 }
