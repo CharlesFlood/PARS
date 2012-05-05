@@ -18,6 +18,13 @@ public class Flight {
     private ArrayList<Customer> passengers;
 
     /**
+     * Gets the list of customers reserved on the flight
+     * @return the list of customers 
+     */
+    public ArrayList<Customer> getPassengers() {
+        return passengers;
+    }
+    /**
      * Get the value of flightNumber
      *
      * @return the value of flightNumber
@@ -48,16 +55,16 @@ public class Flight {
     }
 
     public void makeReservation(Customer cust) {
-        validateCustomer(cust);
+        //validateCustomer(cust);
         int seatNumb = getNextAvailableSeat();
         incNumbOfOpenSeats();
+        passengers.add(cust);
         // Code to add to text file:
         /**
          * *****************************
          * new line + seatNum: \t Customer name, age, etc...
          ******************************
          */
-        validateReservation();
     }
 
     /**
@@ -132,41 +139,29 @@ public class Flight {
         return departureLocation;
     }
 
-    private void validateCustomer(Customer cust) {
-        String error = null;
-        if (cust == null) {
-            error = "Variable customer is set to null";
-        } else {
-            if (cust.getName() == null) {
-                error = "Customer name required.";
-            }
-            if (cust.getFullAddress() == null) {
-                error += System.getProperty("line.seperator") + "Customer address required.";
-            }
-            if (cust.getPhoneNumber()<=0) {/*cust.getPhoneNumber() == null*/
-                error += System.getProperty("line.seperator") + "Customer phone number required.";
-            }
-            if (cust.getDateOfBirth() == null) {
-                error += System.getProperty("line.seperator") + "Customer date of birth required.";
-            }
-            if (cust.getGender() != 'm' && cust.getGender() != 'f') {
-                error += System.getProperty("line.seperator") + "Customer gender required.";
-            }
-        }
-        if (!(error == null)) {
-            throw new NullPointerException(error);
-        }
-    }
-
-    private void validateReservation() {
-        //should check textfile to see if the last line is the reservation
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-
-    private Ticket makeTicket(ConfirmationNumber cn) {
-        if (cn == null) {
-            throw new NullPointerException("Confirmation Number not valid.");
-        }
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
+//    private void validateCustomer(Customer cust) {
+//        String error = null;
+//        if (cust == null) {
+//            error = "Variable customer is set to null";
+//        } else {
+//            if (cust.getName() == null) {
+//                error = "Customer name required.";
+//            }
+//            if (cust.getFullAddress() == null) {
+//                error += System.getProperty("line.seperator") + "Customer address required.";
+//            }
+//            if (cust.getPhoneNumber()<=0) {/*cust.getPhoneNumber() == null*/
+//                error += System.getProperty("line.seperator") + "Customer phone number required.";
+//            }
+//            if (cust.getDateOfBirth() == null) {
+//                error += System.getProperty("line.seperator") + "Customer date of birth required.";
+//            }
+//            if (cust.getGender() != 'm' && cust.getGender() != 'f') {
+//                error += System.getProperty("line.seperator") + "Customer gender required.";
+//            }
+//        }
+//        if (!(error == null)) {
+//            throw new NullPointerException(error);
+//        }
+//    }
 }
