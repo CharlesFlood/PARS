@@ -1,36 +1,32 @@
 package t8.pars;
 
+import java.util.UUID;
 /**
  *
  * @author
  */
-public class ConfirmationNumber {
     
+public class ConfirmationNumber
+{
     private String confirmationNumber;
-    private Customer customer;
-    private Flight flight;
-
-    public ConfirmationNumber() {
+	
+    public ConfirmationNumber()
+    {
+    	generateConfirmationNumber();
     }
 
-    
-    public ConfirmationNumber(String confirmationNumber, Customer customer, Flight flight) {
-        this.confirmationNumber = confirmationNumber;
-        this.customer = customer;
-        this.flight = flight;
-    }
-    
-    public String generateConfirmationNumber(){
-        return null;
-    }
-    
-    public String generateConfirmationNumber(Customer cust, Flight flt){
-        
-        return null;
-    }
+    private void generateConfirmationNumber()
+    {
+		UUID uniqueString;
+		String uniqueConfirmationNumber;
 
-    public String getConfirmationNumber() {
+		uniqueString = UUID.randomUUID();
+		uniqueConfirmationNumber = uniqueString.toString();
+		confirmationNumber = id.substring(0, 8);
+    }
+    
+    public String getConfirmationNumber()
+    {
         return confirmationNumber;
     }
-    
 }
