@@ -38,7 +38,9 @@ public class PARSDisplayer {
     //not entirely sure this next one is needed
     public void printConfirmationNumber(ConfirmationNumber confirmation){}
     public void printConfirmationNumber(){}
-    public void printAvailableFlights(){}
+    public void printAvailableFlightData(String flightNum, String date, String seats){
+        System.out.println(flightNum +"\t " + date +"\t " + seats);
+    }
     public void printTicket(){}
     public void printConfirmAllInformation(){}
     
