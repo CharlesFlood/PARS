@@ -9,6 +9,6 @@ package t8.pars;
  *
  * @author
  */
-public class ConfirmationNumb {
+public class ConfirmationNumber {
 
 }

@@ -150,13 +150,13 @@ public class Flight {
             if (cust.getFullAddress() == null) {
                 error += System.getProperty("line.seperator") + "Customer address required.";
             }
-            if (cust.getPhoneNumber() == null) {
+            if (cust.getPhoneNumber()<=0) {/*cust.getPhoneNumber() == null*/
                 error += System.getProperty("line.seperator") + "Customer phone number required.";
             }
-            if (cust.DOB() == null) {
+            if (cust.getDateOfBirth() == null) {
                 error += System.getProperty("line.seperator") + "Customer date of birth required.";
             }
-            if (cust.getGender() == null) {
+            if (cust.getGender() != 'm' && cust.getGender() != 'f') {
                 error += System.getProperty("line.seperator") + "Customer gender required.";
             }
         }
@@ -170,7 +170,7 @@ public class Flight {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    private Ticket makeTicket(ConfirmationNumb cn) {
+    private Ticket makeTicket(ConfirmationNumber cn) {
         if (cn == null) {
             throw new NullPointerException("Confirmation Number not valid.");
         }

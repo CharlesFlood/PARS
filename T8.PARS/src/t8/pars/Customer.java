@@ -9,9 +9,9 @@ public class Customer {
     private CreditCard creditCard;
     private Flight flight;
     private char gender;//we assume that this will not change
-    private ConfirmationNumb confirmationNumber;
+    private ConfirmationNumber confirmationNumber;
 
-    public Customer(String name, String fullAddress, int phoneNumber, Date dateOfBirth, CreditCard creditCard, Flight flight, char gender, ConfirmationNumb confirmationNumber) {
+    public Customer(String name, String fullAddress, int phoneNumber, Date dateOfBirth, CreditCard creditCard, Flight flight, char gender, ConfirmationNumber confirmationNumber) {
         this.name = name;
         this.fullAddress = fullAddress;
         this.phoneNumber = phoneNumber;
@@ -38,13 +38,22 @@ public class Customer {
         return creditCard;
     }
 
-    public ConfirmationNumb getConfirmationNumber() {
+    public ConfirmationNumber getConfirmationNumber() {
         return confirmationNumber;
     }
 
-    public void setConfirmationNumber(ConfirmationNumb confirmationNumber) {
+    public void setConfirmationNumber(ConfirmationNumber confirmationNumber) {
         this.confirmationNumber = confirmationNumber;
     }
+
+    public String getFullAddress() {
+        return fullAddress;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+    
     
     public void change(String type, String value){
         //I'm not sure what this is supposed to do.
