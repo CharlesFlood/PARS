@@ -24,6 +24,8 @@ public class PARSDisplayer {
         this.confirmation = confirmation;
     }
     
+    public void printRequestEmployeeID(){System.out.print("Enter Employee ID: ");}
+    public void printRequestEmployeePass(){System.out.print("Enter password: ");}
     public void printRequestDepartureLocation(){}
     public void printRequestDepartureDate(){}
     public void printRequestReturnDate(){}
@@ -39,4 +41,14 @@ public class PARSDisplayer {
     public void printAvailableFlights(){}
     public void printTicket(){}
     public void printConfirmAllInformation(){}
+    
+    public void printMainMenu(){
+        System.out.println("1. Reserve a Seat");
+        System.out.println("2. Print an Existing Receipt");
+        System.out.println("3. Show Available Flights");
+        System.out.println("4. Print All Reservations");
+        System.out.println("5. Logout");
+        System.out.println("6. Quit Aplication");
+    }
+    
 }

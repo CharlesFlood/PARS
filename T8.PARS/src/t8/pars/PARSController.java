@@ -1,21 +1,51 @@
 package t8.pars;
+import java.util.Scanner;
 public class PARSController {
 
-    private PARSDisplayer display;
-    private Customer customer;//not sure about the purpose of this one
-    private Flight flight;//not sure what this one is for either
+    private static PARSDisplayer display;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //instantiate objects
+        display = new PARSDisplayer();
+        boolean loggedIn = false;
+        Scanner in = new Scanner(System.in);
         
+        while(true){
+            //employee login
+            display.printRequestEmployeeID();
+            String employeeID = in.nextLine();
+            display.printRequestEmployeePass();
+            String employeePass = in.nextLine();
+            //main menu
+            loggedIn = Employee.validateEmployee(employeeID, employeePass);
+            
+            while(loggedIn){
+                display.printMainMenu();
+                String action = in.nextLine();
+                
+            }
+        }
     }
     
-    private void updateChangerToDatabase(int employeeID){
+    private static void reserveSeat(){
         
     }
-    
-    private void confirmInfo(){
+    private static void getReceipt(){
         
+    }
+    private static void getAvailableFlights(){
+        
+    }
+    private static void printAllReservations(){
+        
+    }
+    private static void logout(){
+        
+    }
+    private static void quit(){
+        //save all data
+        System.exit(0);
     }
 }

@@ -14,6 +14,7 @@ public class Flight {
     private int flightNumber;
     private int numbOfSeatsTaken;
     private int numbOfAvailSeats;
+    private Customer[] passengers;
 
     /**
      * Get the value of flightNumber
