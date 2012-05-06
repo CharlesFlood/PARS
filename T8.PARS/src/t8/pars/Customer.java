@@ -10,17 +10,16 @@ public class Customer {
     private Flight flight;
     private char gender;//we assume that this will not change
     private ConfirmationNumber confirmationNumber;
-    
 
-    public Customer(String name, String address, int phoneNumber, Date dateOfBirth, CreditCard creditCard, Flight flight, char gender, ConfirmationNumber confirmationNumber) {
+    public Customer(String name, String address, int phoneNumber, Date dateOfBirth, CreditCard creditCard)
+    {
         this.name = name;
         this.fullAddress = fullAddress;
         this.phoneNumber = phoneNumber;
         this.dateOfBirth = dateOfBirth;
         this.creditCard = creditCard;
-        this.flight = flight;
-        this.gender = gender;
-        this.confirmationNumber = confirmationNumber;
+        confirmationNumber = new confirmationNumber();
+        
     }
 
     public String getName() {
@@ -51,8 +50,4 @@ public class Customer {
         return address;
     }
 
-    public char getGender() {
-        return gender;
-    }
-    
 }
