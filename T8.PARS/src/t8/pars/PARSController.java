@@ -3,12 +3,14 @@ package t8.pars;
 import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PARSController {
 
     private static PARSDisplayer display;
     public static ArrayList<Flight> flightList;
-    private static String db = "flightDataBase.db";
+    private static String db = "DataBase/flightDataBase.db";
+    private static final int MAX_NUMBER_FLIGHTS = 60;
    
     /**
      * @param args the command line arguments
@@ -24,6 +26,10 @@ public class PARSController {
         
         
         while(true){
+            
+            //load database
+            load();
+
             //employee login
             display.printRequestEmployeeID();
             String employeeID = in.nextLine();
@@ -127,8 +133,8 @@ public class PARSController {
         {//print basic flight info            
             display.printManifest(flight);
         }
-    }        
- 
+    }
+
     public void save()
     {
         try
@@ -151,6 +157,42 @@ public class PARSController {
             System.exit(0);
         }    
     }
-
     
+    public static void load()
+    {// Create the data objects for us to restore.
+
+        // Wrap all in a try/catch block to trap I/O errors.
+        try
+        {
+            // Open file to read from, named SavedObjects.sav.
+            FileInputStream file = new FileInputStream(db);
+            // Create an ObjectInputStream to get objects from load file.
+            ObjectInputStream load = new ObjectInputStream(file);
+
+            // Now we do the restore.
+            // readObject() returns a generic Object, we cast those back
+            // into their original class type.
+            // For primitive types, use the corresponding reference class.
+            flightList = (ArrayList<Flight>) load.readObject();
+            // Close the file.
+            load.close(); // This also closes saveFile.
+            
+            updateFlights();
+        }
+        catch(Exception exc){
+        exc.printStackTrace(); // If there was an error, print the info.
+        }
+
+        // All done.
+    }
+  
+    private static void updateFlights()
+    {
+        while (flightList.size() < MAX_NUMBER_FLIGHTS)
+        {
+            Flight newFlights = new Flight();
+            flightList.add(newFlights.addSjcLasFlight());
+
+        }
+    }
 }

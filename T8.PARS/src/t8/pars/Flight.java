@@ -185,6 +185,16 @@ public class Flight
         return (ArrayList<Customer>) passengers.clone();
     }
     
+    public Flight addSjcLasFlight()
+    {
+        Flight newFlight = new Flight();
+        newFlight.setFlightNumber();
+        newFlight.setDestinationLocation();
+        newFlight.setArrivalLocation();
+
+        return newFlight;
+    }
+    
     @Override
     public String toString()
     {
@@ -220,4 +230,14 @@ public class Flight
 //            throw new NullPointerException(error);
 //        }
 //    }
+
+    private void setDestinationLocation()
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    private void setArrivalLocation()
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
 }
