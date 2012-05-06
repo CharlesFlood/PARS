@@ -47,9 +47,10 @@ public class Flight {
 
     public int getNextAvailableSeat() {
         //if full
-        if (numbOfAvailSeats == 30) {
+        if (numbOfAvailSeats == 0) {
             return -1;
-        } else {
+        }
+        else {
             return (numbOfSeatsTaken + 1);
         }
     }
