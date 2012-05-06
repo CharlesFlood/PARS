@@ -3,13 +3,14 @@ import java.util.Date;
 public class Customer {
 
     private String name;
-    private String fullAddress;
+    private String address;
     private int phoneNumber;
     private Date dateOfBirth;
     private CreditCard creditCard;
     private Flight flight;
     private char gender;//we assume that this will not change
     private ConfirmationNumber confirmationNumber;
+    
 
     public Customer(String name, String fullAddress, int phoneNumber, Date dateOfBirth, CreditCard creditCard, Flight flight, char gender, ConfirmationNumber confirmationNumber) {
         this.name = name;
