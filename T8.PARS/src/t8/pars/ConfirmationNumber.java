@@ -22,7 +22,7 @@ public class ConfirmationNumber
 
 		uniqueString = UUID.randomUUID();
 		uniqueConfirmationNumber = uniqueString.toString();
-		confirmationNumber = id.substring(0, 8);
+		confirmationNumber = uniqueConfirmationNumber.substring(0, 8);
     }
     
     public String getConfirmationNumber()

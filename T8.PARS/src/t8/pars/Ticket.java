@@ -21,7 +21,7 @@ public class Ticket {
         System.out.println(customer.getName()
 // credit card  + flight number +  confermation number + price                    
                     + customer.getConfirmationNumber());
-
+    }
 
     @Override
     public String toString()
@@ -30,7 +30,7 @@ public class Ticket {
                 + flight.getFlightNumber() + "/n"
                 + flight.getDepartureLocation() + "/tto/t" + flight.getArrivalLocation() + "/n"
                 + flight.getDepartureDate() + " " + flight.getDepartureTime() + "/t" 
-                + flight.getArrivalDate + " " + flight.getArrivalTime +
+ //               + flight.getArrivalDate() + " " + flight.getArrivalTime()
                 + customer.getConfirmationNumber();
         
         return ticket;

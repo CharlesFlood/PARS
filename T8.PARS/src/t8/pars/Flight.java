@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
-public class Flight {
-
+public class Flight
+{
     private String departureLocation;
     private String arrivalLocation;
     private String ARRIVAL_TIME = "3:00 PM PST";
@@ -14,14 +14,18 @@ public class Flight {
     private SeatClass seatClass = SeatClass.FIRST;
     private static final int FLIGHT_CAPACITY = 30;
     private int numbOfSeatsTaken;
-    private int numbOfAvailSeats;
+//    private int numbOfAvailSeats;
     private ArrayList<Customer> passengers;
-    private String date;
+//    private String date;
     private static final int price = 150;
+    private String flightNumber;
+        
+    public Flight()
+    {
+        setFlightNumber();
+    }
     
     
-    
-
     /**
      * Gets the list of customers reserved on the flight
      * @return the list of customers 
@@ -36,7 +40,7 @@ public class Flight {
      */
     public boolean hasOpenSeats() {
         boolean hasOpenSeats = false;
-        if (numbOfAvailSeats > 0) {
+        if (numbOfSeatsTaken < FLIGHT_CAPACITY) {
             hasOpenSeats = true;
         }
         return hasOpenSeats;
@@ -46,20 +50,20 @@ public class Flight {
         numbOfSeatsTaken++;
     }
 
-    public int getNextAvailableSeat() {
+    public int getNextAvailableSeat()
+    {
         //if full
-        if (numbOfAvailSeats == 0) {
+        if (numbOfSeatsTaken == FLIGHT_CAPACITY)
             return -1;
-        }
-        else {
-            return (numbOfSeatsTaken + 1);
-        }
+        else
+            return (numbOfSeatsTaken + 1);  
     }
 
-    public void makeReservation(Customer cust) {
+    public void makeReservation(Customer cust)
+    {
         //validateCustomer(cust);
         int seatNumb = getNextAvailableSeat();
-        incNumbOfOpenSeats();
+        incNumbOfTakenSeats();
         passengers.add(cust);
         // Code to add to text file:
         /**
@@ -102,9 +106,20 @@ public class Flight {
      * @return the value of numbOfAvailSeats
      */
     public int getNumbOfAvailSeats() {
-        return numbOfAvailSeats;
+        return FLIGHT_CAPACITY - numbOfSeatsTaken;
     }
 
+    
+    /**
+     * Get the value of departureDate
+     *
+     * @return the value of departureDate
+     */
+/*    public Date getArrivalDate() {
+        return arrivalDate;
+    }
+*/    
+    
     /**
      * Get the value of arrivalTime
      *
@@ -142,18 +157,21 @@ public class Flight {
     }
     
     
-    public String getDate()
+/*    public String getDate()
     {
         return date;
     }
-    
-    
-    public String getFlightNumber()
+*/    
+    public void setFlightNumber()
     {
         Random rand = new Random();
         int x = 100 + rand.nextInt(99);
-        String flightNumber = x.toString();
-            return flightNumber;
+        flightNumber = Integer.toString(x);
+    }
+        
+    public String getFlightNumber()
+    {
+        return flightNumber;
     }
     
     
@@ -162,8 +180,16 @@ public class Flight {
         return price;
     }
     
+    @Override
+    public String toString()
+    {
+        return flightNumber + "\t" + departureDate + departureLocation + "-"
+                + arrivalLocation +"-" + departureLocation+ " " + DEPARTURE_TIME
+                + "\t" + ARRIVAL_TIME + "\t" + getNumbOfAvailSeats()
+                + "\t" + price;
+    }
     
-
+  
 //    private void validateCustomer(Customer cust) {
 //        String error = null;
 //        if (cust == null) {
