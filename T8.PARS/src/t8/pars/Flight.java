@@ -41,7 +41,7 @@ public class Flight {
         return hasOpenSeats;
     }
 
-    private void incNumbOfOpenSeats() {
+    private void incNumbOfTakenSeats() {
         numbOfSeatsTaken++;
     }
 
