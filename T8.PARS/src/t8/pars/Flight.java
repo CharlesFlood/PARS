@@ -17,6 +17,8 @@ public class Flight {
     private int numbOfAvailSeats;
     private ArrayList<Customer> passengers;
     private String date;
+    private static final String price = 150;
+    
     
     
 
@@ -156,6 +158,12 @@ public class Flight {
         int x = 100 + rand.nextInt(99);
         String flightNumber = x.toString();
             return flightNumber;
+    }
+    
+    
+    public int getPrice()
+    {
+        return price;
     }
     
     
