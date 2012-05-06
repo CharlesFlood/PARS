@@ -17,7 +17,7 @@ public class Flight {
     private int numbOfAvailSeats;
     private ArrayList<Customer> passengers;
     private String date;
-    private static final String price = 150;
+    private static final int price = 150;
     
     
     
