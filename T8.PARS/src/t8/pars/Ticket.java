@@ -6,34 +6,34 @@ package t8.pars;
  */
 public class Ticket {
     
-    private ConfirmationNumber confirmation;
     private Customer customer;
     private Flight flight;
     private String ticket;
-    private int ticketPrice;
 
-    public Ticket(ConfirmationNumber confirmation, Customer customer, Flight flight) {
-        this.confirmation = confirmation;
-        this.customer = customer;
-        this.flight = flight;
+    public Ticket(Customer aCustomer, Flight aFlight)
+    {
+        customer = aCustomer;
+        flight = aFlight;
     }
     
-    private ConfirmationNumber generateConfirmationNumber(){
-        
-        return null;
-    }
+    public void printReciept()
+    {
+        System.out.println(customer.getName()
+// credit card  + flight number +  confermation number + price                    
+                    + customer.getConfirmationNumber());
 
-    public ConfirmationNumber getConfirmation() {
-        return confirmation;
-    }
-
-    public int getTicketPrice() {
-        return ticketPrice;
-    }
 
     @Override
-    public String toString() {
-        return super.toString();
+    public String toString()
+    {
+        ticket = "Name: " + customer.getName() + "/n"
+                + flight.getFlightNumber() + "/n"
+                + flight.getDepartureLocation() + "/tto/t" + flight.getArrivalLocation() + "/n"
+                + flight.getDepartureDate() + " " + flight.getDepartureTime() + "/t" 
+                + flight.getArrivalDate + " " + flight.getArrivalTime +
+                + customer.getConfirmationNumber();
+        
+        return ticket;
     }
     
 }
