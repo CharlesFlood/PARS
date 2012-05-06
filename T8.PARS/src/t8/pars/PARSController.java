@@ -96,7 +96,6 @@ public class PARSController {
     }
     private static void getAvailableFlights()
     {
-        display.printAvailableFlightData("Flight Number", "Date", "Seats remaining");
         //for each flight
         for(Flight flight:flightList)
         {
@@ -105,57 +104,52 @@ public class PARSController {
                 //we already know that the flight is not empty
                 
                 //print out Flight#, Date, and seats remaining
-                display.printAvailableFlightData(
-                        flight.getFlightNumber(),
-                        flight.getDepartureDate().toString(),
-                        Integer.toString(flight.getNumbOfAvailSeats()));
+                display.printFlightInfo(flight);
             }
         }
     }
+    
+    private static void getAllFlightsInfo()
+    {
+        //for each flight
+        for(Flight flight:flightList)
+        {
+            //we already know that the flight is not empty
+
+            //print out Flight#, Date, and seats remaining
+            display.printFlightInfo(flight);
+        }
+    }   
+    
     private static void printAllReservations()
     {
         for(Flight flight:flightList)
-        {
-            
-            //print basic flight info
-            
-            
+        {//print basic flight info            
+            display.printManifest(flight);
         }
     }        
  
     public void save()
     {
-            try{
-
-            //use buffering
-
+        try
+        {//use buffering
             OutputStream file = new FileOutputStream( db );
-
             OutputStream buffer = new BufferedOutputStream( file );
-
             ObjectOutput output = new ObjectOutputStream( buffer );
-
-            try{
-
-              output.writeObject(flightList); // <------------------------ This writes to an object
-
+            try
+            {// Writes to an object
+                output.writeObject(flightList); 
             }
-
-            finally{
-
-              output.close();
-
+            finally
+            {
+                output.close();
             }
-
-          }  
-
-          catch(IOException ex){
-
+        }  
+        catch(IOException ex)
+        {
             System.out.println("Error in updating database");
-
             System.exit(0);
-
-          }    
+        }    
     }
 
     

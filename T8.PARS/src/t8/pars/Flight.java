@@ -62,7 +62,7 @@ public class Flight
     public void makeReservation(Customer cust)
     {
         //validateCustomer(cust);
-        int seatNumb = getNextAvailableSeat();
+//        int seatNumb = getNextAvailableSeat();
         incNumbOfTakenSeats();
         passengers.add(cust);
         // Code to add to text file:
@@ -178,6 +178,11 @@ public class Flight
     public int getPrice()
     {
         return price;
+    }
+    
+    public ArrayList<Customer> costumerList()
+    {
+        return (ArrayList<Customer>) passengers.clone();
     }
     
     @Override

@@ -20,6 +20,12 @@ public class CreditCard {
     public int getCardNumber() {
         return cardNumber;
     }
+    public String getHiddenCardNumber()
+    {
+        String numberString = Integer.toString(cardNumber);
+        numberString = "xxxxxxxx" + numberString.substring(12, 16);
+        return numberString;
+    }
     public Date getExpirationDate() {
         return expirationDate;
     }
