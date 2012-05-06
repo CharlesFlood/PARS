@@ -12,7 +12,7 @@ public class Customer {
     private ConfirmationNumber confirmationNumber;
     
 
-    public Customer(String name, String fullAddress, int phoneNumber, Date dateOfBirth, CreditCard creditCard, Flight flight, char gender, ConfirmationNumber confirmationNumber) {
+    public Customer(String name, String address, int phoneNumber, Date dateOfBirth, CreditCard creditCard, Flight flight, char gender, ConfirmationNumber confirmationNumber) {
         this.name = name;
         this.fullAddress = fullAddress;
         this.phoneNumber = phoneNumber;
@@ -48,16 +48,11 @@ public class Customer {
     }
 
     public String getFullAddress() {
-        return fullAddress;
+        return address;
     }
 
     public char getGender() {
         return gender;
     }
     
-    
-    public void change(String type, String value){
-        //I'm not sure what this is supposed to do.
-    }
-
 }
