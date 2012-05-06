@@ -34,10 +34,6 @@ public class Flight {
      *
      * @return the value of flightNumber
      */
-    public int getFlightNumber() {
-        return flightNumber;
-    }
-
     public boolean hasOpenSeats() {
         boolean hasOpenSeats = false;
         if (numbOfAvailSeats > 0) {
