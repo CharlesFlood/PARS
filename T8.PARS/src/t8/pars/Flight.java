@@ -2,6 +2,7 @@ package t8.pars;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 
 public class Flight {
 
@@ -12,8 +13,6 @@ public class Flight {
     private Date departureDate;
     private SeatClass seatClass = SeatClass.FIRST;
     private static final int FLIGHT_CAPACITY = 30;
-    private final String flightNumberToSJC = "PA 055" ;
-    private final String flightNumberToLAS = "PA 007" ;
     private int numbOfSeatsTaken;
     private int numbOfAvailSeats;
     private ArrayList<Customer> passengers;
@@ -59,11 +58,6 @@ public class Flight {
         }
     }
 
-
-
-
-
-    
     public void makeReservation(Customer cust) {
         //validateCustomer(cust);
         int seatNumb = getNextAvailableSeat();
@@ -158,10 +152,10 @@ public class Flight {
     
     public String getFlightNumber()
     {
-        if (arrivalLocation == SJC)
-            return flightNumberToSJC;
-        else if (arrivalLocation == LAS)
-            return flightNumberToLAS;
+        Random rand = new Random();
+        int x = 100 + rand.nextInt(99);
+        String flightNumber = x.toString();
+            return flightNumber;
     }
     
     
