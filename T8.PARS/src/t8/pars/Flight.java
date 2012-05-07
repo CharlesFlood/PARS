@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
-public class Flight
+public final class Flight
 {
     private String departureLocation;
     private String arrivalLocation;
@@ -20,11 +20,19 @@ public class Flight
     private static final int price = 150;
     private String flightNumber;
         
-    public Flight()
+/*    public Flight()
     {
         setFlightNumber();
     }
-    
+*/    
+    public Flight(String departure, String arrival, Date date)
+    {
+        departureLocation = departure;
+        arrivalLocation = arrival;
+        departureDate = date;
+        setFlightNumber();
+        passengers = new ArrayList<Customer>();
+    }
     
     /**
      * Gets the list of customers reserved on the flight
@@ -185,15 +193,15 @@ public class Flight
         return (ArrayList<Customer>) passengers.clone();
     }
     
-    public Flight addSjcLasFlight()
-    {
-        Flight newFlight = new Flight();
-        newFlight.setFlightNumber();
-        newFlight.setDestinationLocation();
-        newFlight.setArrivalLocation();
-
-        return newFlight;
-    }
+//    public Flight addSjcLasFlight()
+//    {
+//        Flight newFlight = new Flight();
+//        newFlight.setFlightNumber();
+//        newFlight.setDestinationLocation();
+//        newFlight.setArrivalLocation();
+//
+//        return newFlight;
+//    }
     
     @Override
     public String toString()

@@ -3,14 +3,16 @@ package t8.pars;
 import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class PARSController {
 
     private static PARSDisplayer display;
-    public static ArrayList<Flight> flightList;
-    private static String db = "DataBase/flightDataBase.db";
+    public static ArrayList<Flight> flightList = new ArrayList();
+    private static String db = "flightDataBase.db";
     private static final int MAX_NUMBER_FLIGHTS = 60;
+    private static final File FILE = new File(db);
    
     /**
      * @param args the command line arguments
@@ -135,7 +137,7 @@ public class PARSController {
         }
     }
 
-    public void save()
+    public static void save()
     {
         try
         {//use buffering
@@ -144,7 +146,7 @@ public class PARSController {
             ObjectOutput output = new ObjectOutputStream( buffer );
             try
             {// Writes to an object
-                output.writeObject(flightList); 
+                output.writeObject(new ArrayList<Flight>()); 
             }
             finally
             {
@@ -164,6 +166,14 @@ public class PARSController {
         // Wrap all in a try/catch block to trap I/O errors.
         try
         {
+            if (!FILE.exists())
+            {
+                FILE.createNewFile();
+            }           
+                System.out.println(flightList.size());
+                updateFlights();
+                System.out.println(flightList.size());
+                save();
             // Open file to read from, named SavedObjects.sav.
             FileInputStream file = new FileInputStream(db);
             // Create an ObjectInputStream to get objects from load file.
@@ -188,11 +198,17 @@ public class PARSController {
   
     private static void updateFlights()
     {
+        int i =0;
+        Date date;
+         
         while (flightList.size() < MAX_NUMBER_FLIGHTS)
         {
-            Flight newFlights = new Flight();
-            flightList.add(newFlights.addSjcLasFlight());
-
+            i++;
+            date = new Date(System.currentTimeMillis() + i*(24*60*60*1000) );
+            Flight newFlight1 = new Flight("SJC", "LAS" , date);
+            flightList.add(newFlight1);
+            Flight newFlight2 = new Flight("LAS", "SJC" , date);
+            flightList.add(newFlight2);
         }
     }
 }
