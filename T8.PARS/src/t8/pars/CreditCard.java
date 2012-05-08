@@ -11,11 +11,25 @@ public class CreditCard {
     private int cardNumber;
     private int securityNumber;
 
-    public CreditCard(Date expirationDate, String nameOnCard, int cardNumber, int securityNumber) {
-        this.expirationDate = expirationDate;
-        this.nameOnCard = nameOnCard;
-        this.cardNumber = cardNumber;
-        this.securityNumber = securityNumber;
+    public CreditCard(Date expirationDate,
+            String nameOnCard,
+            int cardNumber,
+            int securityNumber) throws IllegalArgumentException
+    {
+        boolean validInfo =  validateCreditCardNumber(cardNumber)
+                && validateSecurityNumber(securityNumber)
+                && validateCreditCardInformation();
+        if (validInfo)
+        {
+            this.expirationDate = expirationDate;
+            this.nameOnCard = nameOnCard;
+            this.cardNumber = cardNumber;
+            this.securityNumber = securityNumber;            
+        }
+        else
+        {
+            throw new IllegalArgumentException("Credit Card Information are not valid");
+        }
     }
     public int getCardNumber() {
         return cardNumber;
@@ -34,5 +48,27 @@ public class CreditCard {
     }
     public int getSecurityNumber() {
         return securityNumber;
+    }
+    
+    private boolean validateCreditCardNumber(int creditCardNumber)
+    {
+        String number = creditCardNumber + "";
+        return number.length()== 16;       
+    }
+
+    private boolean validateSecurityNumber(int securityNumber)
+    {
+        String number = securityNumber + "";
+        return number.length()== 3;
+    }
+
+    private boolean validateCreditCardInformation()
+    {
+        return true;
+    }
+    
+    private boolean chargeCreditCard()
+    {
+        return true;
     }
 }
