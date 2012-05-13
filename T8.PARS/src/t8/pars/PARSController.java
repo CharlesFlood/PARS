@@ -1,10 +1,8 @@
 package t8.pars;
 
 import java.io.*;
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+import java.text.DateFormat;
+import java.util.*;
 
 public class PARSController {
 
@@ -146,7 +144,7 @@ public class PARSController {
             ObjectOutput output = new ObjectOutputStream( buffer );
             try
             {// Writes to an object
-                output.writeObject(new ArrayList<Flight>()); 
+                output.writeObject(flightList);// = new ArrayList<Flight>()); 
             }
             finally
             {
@@ -166,31 +164,32 @@ public class PARSController {
         // Wrap all in a try/catch block to trap I/O errors.
         try
         {
+
             if (!FILE.exists())
             {
                 FILE.createNewFile();
-            }           
-                System.out.println(flightList.size());
                 updateFlights();
-                System.out.println(flightList.size());
                 save();
+            }           
+
             // Open file to read from, named SavedObjects.sav.
             FileInputStream file = new FileInputStream(db);
             // Create an ObjectInputStream to get objects from load file.
             ObjectInputStream load = new ObjectInputStream(file);
-
             // Now we do the restore.
             // readObject() returns a generic Object, we cast those back
             // into their original class type.
             // For primitive types, use the corresponding reference class.
             flightList = (ArrayList<Flight>) load.readObject();
+       
             // Close the file.
-            load.close(); // This also closes saveFile.
-            
+            load.close(); // This also closes loadFile.
+            save();
             updateFlights();
         }
-        catch(Exception exc){
-        exc.printStackTrace(); // If there was an error, print the info.
+        catch(Exception exc)
+        {
+            exc.printStackTrace(); // If there was an error, print the info.
         }
 
         // All done.
@@ -198,13 +197,31 @@ public class PARSController {
   
     private static void updateFlights()
     {
-        int i =0;
-        Date date;
-         
+        int i;
+        Date lastFlightDate = new Date();  
+        Date nextFlightDate = new Date(System.currentTimeMillis()+ 24*60*60*1000);
+
+        ArrayList<Flight> newFlightList = new ArrayList();
+        
+        for(Flight flight:flightList)
+        {           
+            if (flight.getDepartureDate().after(nextFlightDate))
+                newFlightList.add(flight);
+            lastFlightDate = flight.getDepartureDate();
+        }
+        flightList.clear();
+        flightList = (ArrayList<Flight>) newFlightList.clone();
+                
+        i =0;
+
+        Calendar cal = Calendar.getInstance();  
+
         while (flightList.size() < MAX_NUMBER_FLIGHTS)
         {
             i++;
-            date = new Date(System.currentTimeMillis() + i*(24*60*60*1000) );
+            cal.setTime(lastFlightDate);  
+            cal.add(Calendar.DAY_OF_YEAR, i); 
+            Date date = cal.getTime();  
             Flight newFlight1 = new Flight("SJC", "LAS" , date);
             flightList.add(newFlight1);
             Flight newFlight2 = new Flight("LAS", "SJC" , date);

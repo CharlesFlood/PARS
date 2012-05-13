@@ -1,10 +1,11 @@
 package t8.pars;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
-public final class Flight
+public final class Flight implements Serializable
 {
     private String departureLocation;
     private String arrivalLocation;
